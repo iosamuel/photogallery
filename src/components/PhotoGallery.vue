@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
   .gallery {
     display: flex;
-    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     background-repeat: no-repeat;
     background-size: cover;
