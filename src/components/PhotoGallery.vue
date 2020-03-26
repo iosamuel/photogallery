@@ -17,17 +17,14 @@ export default {
   data() {
     return {
       highlighted: '',
-      columns: 3,
+      imgColumn: 3,
     };
   },
   computed: {
     photosColumns() {
-      const photosClone = [...this.photos];
-      const photos = [];
-      while (photosClone.length) {
-        photos.push(photosClone.splice(0, this.columns));
-      }
-      return photos;
+      return Array.from({
+        length: Math.ceil(this.photos.length / this.imgColumn),
+      }, (v, i) => this.photos.slice(i * this.imgColumn, i * this.imgColumn + this.imgColumn));
     },
   },
   methods: {
@@ -42,7 +39,7 @@ export default {
   .gallery {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
