@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  height: 100%;
+}
+
+.upload-file label {
+  cursor: pointer;
+  display: inline-block;
+  width: 300px;
+  padding: 14px;
+  background-color: #41b883;
+  color: white;
+  border-radius: 14px;
+  box-shadow: 2px 2px 2px black;
+}
+.upload-file label:hover {
+  background-color: #35495e;
+}
+
+.upload-file input {
+  display: none;
+}
