@@ -2,42 +2,34 @@
   <div id="app">
     <div class="upload-file">
       <label for="file">Sube imagenes</label>
-      <input @change="upload" type="file" ref="file" id="file" multiple>
+      <input @change="upload" type="file" ref="file" id="file" multiple />
     </div>
-    <hr>
-    <PhotoGallery :photos="photos"/>
+    <hr />
+    <PhotoGallery :photos="photos" />
   </div>
 </template>
 
-<script>
-import PhotoGallery from './components/PhotoGallery.vue';
+<script setup>
+import { ref } from "vue";
+import PhotoGallery from "./components/PhotoGallery.vue";
 
-export default {
-  name: 'App',
-  components: {
-    PhotoGallery,
-  },
-  data() {
-    return {
-      photos: [],
+const photos = ref([]);
+const file = ref();
+
+function upload() {
+  for (let archivo of file.value.files) {
+    const reader = new FileReader();
+    reader.onload = ({ target }) => {
+      photos.value.push(target.result);
     };
-  },
-  methods: {
-    upload() {
-      this.$refs.file.files.forEach((archivo) => {
-        const reader = new FileReader();
-        reader.onload = ({ target }) => {
-          this.photos.push(target.result);
-        };
-        reader.readAsDataURL(archivo);
-      });
-    },
-  },
-};
+    reader.readAsDataURL(archivo);
+  }
+}
 </script>
 
 <style lang="scss">
-html, body {
+html,
+body {
   height: 100%;
 }
 
